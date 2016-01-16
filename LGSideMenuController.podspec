@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license = 'MIT'
     s.homepage = 'https://github.com/Friend-LGA/LGSideMenuController'
     s.author = { 'Grigory Lutkov' => 'Friend.LGA@gmail.com' }
-    s.source = { :git => 'https://github.com/Friend-LGA/LGSideMenuController.git', :tag => s.version }
+    s.source = { :git => 'https://github.com/wonderkiln/LGSideMenuController.git', :tag => s.version }
     s.summary = 'iOS view controller shows left and right views on top of everything by pressing button or gesture'
 
     s.requires_arc = true
