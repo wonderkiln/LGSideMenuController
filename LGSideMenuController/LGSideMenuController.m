@@ -230,14 +230,17 @@
     _leftViewSwipeGestureEnabled = YES;
     _rightViewSwipeGestureEnabled = YES;
 
-    _rootViewLayerShadowColor = [UIColor colorWithWhite:0.f alpha:0.5];
-    _rootViewLayerShadowRadius = 5.f;
+    _rootViewLayerShadowColor = [UIColor colorWithWhite:0.f alpha:0.2];
+    _rootViewLayerShadowRadius = 0.f;
 
     _leftViewLayerShadowColor = [UIColor colorWithWhite:0.f alpha:0.5];
     _leftViewLayerShadowRadius = 5.f;
 
     _rightViewLayerShadowColor = [UIColor colorWithWhite:0.f alpha:0.5];
     _rightViewLayerShadowRadius = 5.f;
+    
+    _rootViewLayerShadowOffset = CGSizeMake(-20.f, 20.f);
+    _rootViewLayerCornerRadius = 12.f;
 }
 
 - (void)setupDefaults
@@ -278,6 +281,7 @@
 
     if (_rootVC)
     {
+        _rootVC.view.clipsToBounds = YES;
         [self addChildViewController:_rootVC];
         [self.view addSubview:_rootVC.view];
     }
@@ -481,6 +485,7 @@
 
         _rootVC = rootViewController;
 
+        _rootVC.view.clipsToBounds = YES;
         [self addChildViewController:_rootVC];
         [self.view addSubview:_rootVC.view];
 
@@ -577,6 +582,12 @@
 {
     _rootVC.view.transform = CGAffineTransformIdentity;
     _rootViewStyleView.transform = CGAffineTransformIdentity;
+    
+//    _rootViewStyleView.layer.shadowOpacity = percentage;
+    _rootViewStyleView.layer.cornerRadius = _rootViewLayerCornerRadius * percentage;
+    _rootViewStyleView.layer.shadowOffset = CGSizeMake(_rootViewLayerShadowOffset.width * percentage,
+                                                       _rootViewLayerShadowOffset.height * percentage);
+    _rootVC.view.layer.cornerRadius = _rootViewLayerCornerRadius * percentage;
 
     if (_rootViewCoverViewForLeftView)
         _rootViewCoverViewForLeftView.transform = CGAffineTransformIdentity;
@@ -864,6 +875,7 @@
         _rootViewStyleView.layer.borderColor = _rootViewLayerBorderColor.CGColor;
         _rootViewStyleView.layer.shadowColor = _rootViewLayerShadowColor.CGColor;
         _rootViewStyleView.layer.shadowRadius = _rootViewLayerShadowRadius;
+        _rootViewStyleView.layer.shadowOffset = _rootViewLayerShadowOffset;
     }
 
     if (kLGSideMenuIsLeftViewAlwaysVisible || self.isLeftViewShowing)

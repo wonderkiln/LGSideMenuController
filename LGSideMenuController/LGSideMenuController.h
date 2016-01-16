@@ -207,6 +207,9 @@ typedef NS_ENUM(NSUInteger, LGSideMenuSwipeGestureArea)
 /** For (presentationStyle == LGSideMenuPresentationStyleSlideBelow || LGSideMenuPresentationStyleScaleFromBig || LGSideMenuPresentationStyleScaleFromLittle) default is 5.f */
 @property (assign, nonatomic) IBInspectable CGFloat rootViewLayerShadowRadius;
 
+@property (assign, nonatomic) IBInspectable CGSize rootViewLayerShadowOffset;
+@property (assign, nonatomic) IBInspectable CGFloat rootViewLayerCornerRadius;
+
 @property (strong, nonatomic) IBInspectable UIColor *leftViewBackgroundColor;
 @property (strong, nonatomic) IBInspectable UIColor *leftViewLayerBorderColor;
 @property (assign, nonatomic) IBInspectable CGFloat leftViewLayerBorderWidth;
